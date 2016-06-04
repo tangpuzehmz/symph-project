@@ -1,0 +1,146 @@
+{% extends "template/base.html" %}
+{% block title %}Employee CRUD - Add{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>New Employee Payrun</h3>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/index2" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
+                </div>
+                <div class="panel-body">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/create2">
+            <div class="row">
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Date Spent</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="date_spent" name="date_spent" placeholder="From" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Account</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="account" name="account" placeholder="To" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Description</label>
+                            <div class="col-lg-8 col-sm-8">
+                                <textarea class="form-control" rows="4" id="description" name="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Supplier</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="supplier" name="supplier" placeholder="Full Name" autofocus />
+                            </div>
+                        </div>
+
+            </div>
+            <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Tax Type</label>
+                            <div class="col-lg-4">
+                                <select id="class" class="form-control" name="tax_type">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>                    
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Payment Method</label>
+                            <div class="col-lg-4">
+                                <select id="class" class="form-control" name="payment_method">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>                    
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Client/Project</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="client_project" name="client_project" placeholder="Allowance 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Receipt Image</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="receipt_image" name="receipt_image" placeholder="Allowance 3" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Amount</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Allowance 4" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Notes</label>
+                            <div class="col-lg-8 col-sm-8">
+                                <textarea class="form-control" rows="2" id="description" name="description"></textarea>
+                            </div>
+                        </div>
+
+            </div>
+            </div> 
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+{% block footer_script %}
+    <script>
+        $(function () {
+            var t = new Date();
+            var dd = t.getDate();
+            if (dd < 10)
+                dd = "0" + dd;
+
+            var mm = t.getMonth() + 1;
+            if (mm < 10)
+                mm = "0" + mm;
+
+            var yyyy = t.getFullYear();
+
+            $("#date_spent").val(dd + '-' + mm + '-' + yyyy);
+            $("#date_spent").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
+          
+        });
+
+
+        // jQuery plugin to prevent double submission of forms
+        jQuery.fn.preventDoubleSubmission = function () {
+            $(this).on('submit', function (e) {
+                var $form = $(this);
+
+                if ($form.data('submitted') === true) {
+                    // Previously submitted - don't submit again
+                    e.preventDefault();
+                } else {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+                }
+            });
+
+            // Keep chainability
+            return this;
+        };
+
+        $('form').preventDoubleSubmission();
+    </script>
+{% endblock %}

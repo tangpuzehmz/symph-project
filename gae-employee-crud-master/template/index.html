@@ -1,0 +1,57 @@
+{% extends "template/base.html" %}
+{% block title %}List of Employee{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>List of Symphers</h3>
+            </div>
+            <form id="employee-list" class="form-horizontal" role="form" method="post" action="/">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Employee Records
+                        <div class="pull-right">
+                        <a href="/create" class="btn btn-success">Add New</a>
+
+                        <input type="submit" class="btn btn-danger" name="delete" value="Delete"></div>
+                        <table class="table table-bordered ">
+                    </div>
+                    <div class="panel-body">
+                        
+                            <thead>
+                                <tr class="info">
+                                    <th></th>
+                                    <th class="col-md-2">Employee</th>
+                                    <th class="col-md-2">Basic Pay</th>
+                                    <th class="col-md-2">Allowance</th>
+                                    <th class="col-md-2">Deduction</th>
+                                    <th class="col-md-2">Additional</th>
+                                    <th class="col-md-1">Net Pay</th>
+                                    <th class="col-md-1">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for employee in employees %}
+                                <tr>
+                                    <td><input type="checkbox" name="employee_id" value="{{employee.key().id()}}"></td>
+                                    <td>{{ employee.full_name }}</td>
+                                    <td>{{ employee.basic_pay }}</td>
+                                    <td>{{ employee.allowance_calc }}</td>
+                                    <td>{{ employee.deduc_calc }}</td>
+                                    <td>{{ employee.additional_calc }}</td>
+                                    <td>{{ employee.net_pay }}</td>
+                                    <!-- get numeric ID of entity key -->
+                                    <td><a href="/edit?id={{employee.key().id()}}">Edit</a></td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">No record Found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <p>
+                <strong>To Create, Update or Delete a record, you will need to login with any of your Google ID.</strong>
+            </p>
+{% endblock %}

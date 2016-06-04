@@ -1,0 +1,194 @@
+{% extends "template/base.html" %}
+{% block title %}Employee CRUD - Edit{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>Edit Employee Record</h3>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
+                </div>
+                <div class="panel-body">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/edit">
+                        <input type="hidden" name="id" value = "{{employee.key().id()}}">
+            <div class="row">
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="payperiod_from">Pay Period From</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payperiod_from" name="payperiod_from" value="{{employee.payperiod_from}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="payperiod_to">Pay Period To</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payperiod_to" name="payperiod_to" value="{{employee.payperiod_to}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="pay_date">Pay Date</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="pay_date" name="pay_date" value="{{employee.pay_date}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="full_name">Employee Name</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="full_name" name="full_name" value="{{employee.full_name}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="basic_pay">Basic Pay</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="basic_pay" name="basic_pay" value="{{employee.basic_pay}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="allowance_1">Allowance 1</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_1" name="allowance_1" value="{{employee.allowance_1}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="allowance_2">Allowance 2</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_2" name="allowance_2" value="{{employee.allowance_2}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="allowance_3">Allowance 3</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_3" name="allowance_3" value="{{employee.allowance_3}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="allowance_4">Allowance 4</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_4" name="allowance_4" value="{{employee.allowance_4}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="allowance_calc">Total Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_calc" name="allowance_calc" value="{{employee.allowance_calc}}" />
+                            </div>
+                        </div>
+            </div>
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="deduc_1">Deduction 1</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_1" name="deduc_1" value="{{employee.deduc_1}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="deduc_2">Deduction 2</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_2" name="deduc_2" value="{{employee.deduc_2}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="deduc_3">Deduction 3</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_3" name="deduc_3" value="{{employee.deduc_3}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="deduc_4">Deduction 4</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_4" name="deduc_4" value="{{employee.deduc_4}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="deduc_calc">Total Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_calc" name="deduc_calc" value="{{employee.deduc_calc}}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="additional_1">Additional 1</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_1" name="additional_1" value="{{employee.additional_1}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="additional_2">Additional 2</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_2" name="additional_2" value="{{employee.additional_2}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="additional_3">Additional 3</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_3" name="additional_3" value="{{employee.additional_3}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="additional_4">Additional 4</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_4" name="additional_4" value="{{employee.additional_4}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="additional_calc">Total Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_calc" name="additional_calc" value="{{employee.additional_calc}}" />
+                            </div>
+                        </div>
+
+
+                         <div class="form-group">
+                            <label class="col-lg-4 control-label" for="net_pay">Net Pay</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="net_pay" name="net_pay" value="{{employee.net_pay}}" />
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-lg-4 control-label" for="notes">Notes</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="notes" name="notes" value="{{employee.notes}}" />
+                            </div>
+                        </div>
+            </div>
+            </div>        
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+{% block footer_script %}
+    <script>
+        $(function () {
+            $("#payperiod_from").val('{{employee.payperiod_from}}'.substr(8,2)+ '-' + '{{employee.payperiod_from}}'.substr(5,2) + '-' + '{{employee.payperiod_from}}'.substr(0,4));
+            $("#payperiod_from").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });    
+
+            $("#payperiod_to").val('{{employee.payperiod_to}}'.substr(8,2)+ '-' + '{{employee.payperiod_to}}'.substr(5,2) + '-' + '{{employee.payperiod_to}}'.substr(0,4));
+            $("#payperiod_to").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });   
+
+            $("#pay_date").val('{{employee.pay_date}}'.substr(8,2)+ '-' + '{{employee.pay_date}}'.substr(5,2) + '-' + '{{employee.pay_date}}'.substr(0,4));
+            $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });   
+        });
+
+        // jQuery plugin to prevent double submission of forms
+        jQuery.fn.preventDoubleSubmission = function () {
+            $(this).on('submit', function (e) {
+                var $form = $(this);
+
+                if ($form.data('submitted') === true) {
+                    // Previously submitted - don't submit again
+                    e.preventDefault();
+                } else {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+                }
+            });
+            return this;
+        };
+    </script>   
+{% endblock %}

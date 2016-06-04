@@ -1,0 +1,56 @@
+{% extends "template/base.html" %}
+{% block title %}Expense Chart{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>Expense</h3>
+            </div>
+            <form id="employee-list" class="form-horizontal" role="form" method="post" action="/index2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Expense Records
+                        <div class="pull-right">
+                        <a href="/create2" class="btn btn-success">Add New</a>
+
+                        <input type="submit" class="btn btn-danger" name="delete" value="Delete"></div>
+                        <table class="table table-bordered ">
+                    </div>
+                        <div class="panel-body">
+                            <thead>
+                                <tr class = "info">
+                                    <th></th>
+                                    <th class="col-md-2">Date Spent</th>
+                                    <th class="col-md-1">Account</th>
+                                    <th class="col-md-2">Payment Type</th>
+                                    <th class="col-md-3">Supplier</th>
+                                    <th class="col-md-3">Client/Project</th>
+                                    <th class="col-md-1">Amount</th>
+                                    <th class="col-md-1">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for employee in employees %}
+                                <tr>
+                                    <td><input type="checkbox" name="employee_id" value="{{employee.key().id()}}"></td>
+                                    <td>{{ employee.date_spent }}</td>
+                                    <td>{{ employee.account }}</td>
+                                    <td>{{ employee.payment_type }}</td>
+                                    <td>{{ employee.supplier }}</td>
+                                    <td>{{ employee.client_project }}</td>
+                                    <td>{{ employee.amount }}</td>
+                                    <!-- get numeric ID of entity key -->
+                                    <td><a href="/edit2?id={{employee.key().id()}}">Edit</a></td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">No record Found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <p>
+                <strong>To Create, Update or Delete a record, you will need to login with any of your Google ID.</strong>
+            </p>
+{% endblock %}

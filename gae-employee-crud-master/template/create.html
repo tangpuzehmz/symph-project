@@ -1,0 +1,211 @@
+{% extends "template/base.html" %}
+{% block title %}Employee CRUD - Add{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>New Employee Payrun</h3>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
+                </div>
+                <div class="panel-body">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/create">
+            <div class="row">
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Pay Period</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payperiod_from" name="payperiod_from" placeholder="From" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Pay Period</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payperiod_to" name="payperiod_to" placeholder="To" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Pay Date</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="pay_date" name="pay_date" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Employee</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name" autofocus />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Basic Pay</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="basic_pay" name="basic_pay" autofocus />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_1" name="allowance_1" placeholder="Allowance 1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_2" name="allowance_2" placeholder="Allowance 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_3" name="allowance_3" placeholder="Allowance 3" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_4" name="allowance_4" placeholder="Allowance 4" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Total Allowance</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="allowance_calc" name="allowance_calc"  />
+                            </div>
+                        </div>
+             </div>
+            <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_1" name="deduc_1" placeholder="Deduction 1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_2" name="deduc_2" placeholder="Deduction 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_3" name="deduc_3" placeholder="Deduction 3" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_4" name="deduc_4" placeholder="Deduction 4" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Total Deduction</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="deduc_calc" name="deduc_calc"  />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_1" name="additional_1" placeholder="Additional 1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_2" name="additional_2" placeholder="Additional 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_3" name="additional_3" placeholder="Additional 3" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_4" name="additional_4" placeholder="Additional 4" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Total Additional</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="additional_calc" name="additional_calc"  />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Net Pay</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="net_pay" name="net_pay"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Notes</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="notes" name="notes"  />
+                            </div>
+                        </div>
+            </div>
+            </div> 
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+{% block footer_script %}
+    <script>
+        $(function () {
+            var t = new Date();
+            var dd = t.getDate();
+            if (dd < 10)
+                dd = "0" + dd;
+
+            var mm = t.getMonth() + 1;
+            if (mm < 10)
+                mm = "0" + mm;
+
+            var yyyy = t.getFullYear();
+
+            $("#payperiod_from").val(dd + '-' + mm + '-' + yyyy);
+            $("#payperiod_from").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
+            $("#payperiod_to").val(dd + '-' + mm + '-' + yyyy);
+            $("#payperiod_to").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
+            $("#pay_date").val(dd + '-' + mm + '-' + yyyy);
+            $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
+        });
+
+
+        // jQuery plugin to prevent double submission of forms
+        jQuery.fn.preventDoubleSubmission = function () {
+            $(this).on('submit', function (e) {
+                var $form = $(this);
+
+                if ($form.data('submitted') === true) {
+                    // Previously submitted - don't submit again
+                    e.preventDefault();
+                } else {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+                }
+            });
+
+            // Keep chainability
+            return this;
+        };
+
+        $('form').preventDoubleSubmission();
+    </script>
+{% endblock %}

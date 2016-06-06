@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            <title>Symph | Finance</title> 
+        
+        <link href="img/symph.gif" rel="shortcut icon" type="image/gif">
+
+    <meta charset="utf-8">
+    <meta property="og:site_name" content="Invoice Ninja" />
+    <meta property="og:url" content="https://app.invoiceninja.com" />
+    <meta property="og:title" content="Invoice Ninja" />
+    <meta property="og:image" content="https://app.invoiceninja.com/images/round_logo.png" />
+    <meta property="og:description" content="Simple, Intuitive Invoicing." />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="r0E7TErJQagVJ55QHAvSkZFl2OkWVSlbnNgWtI96">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-config" content="none"/> 
+
+    <link rel="canonical" href="https://app.invoiceninja.com/login" />
+
+    <script src="https://app.invoiceninja.com/built.js?no_cache=2.5.1.3" type="text/javascript"></script>    
+
+    <script type="text/javascript">
+        var NINJA = NINJA || {};
+        NINJA.fontSize = 9;
+        NINJA.isRegistered = false;
+        
+        window.onerror = function (errorMsg, url, lineNumber, column, error) {
+            if (errorMsg.indexOf('Script error.') > -1) {
+                return;
+            }
+
+            try {
+                // Use StackTraceJS to parse the error context 
+                if (error) {
+                    var message = error.message ? error.message : error;
+                    StackTrace.fromError(error).then(function(result) {
+                        var gps = new StackTraceGPS();
+                        gps.findFunctionName(result[0]).then(function(result) {
+                            logError(errorMsg + ': ' + JSON.stringify(result));
+                        });
+                    });
+                } else {
+                    logError(errorMsg);
+                }
+
+                trackEvent('/error', errorMsg);
+            } catch(err) {}
+
+            return false;
+        }
+
+        function logError(message) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://app.invoiceninja.com/log_error',
+                data: 'error='+encodeURIComponent(message)+'&url='+encodeURIComponent(window.location)
+            });
+        }
+
+        /* Set the defaults for DataTables initialisation */
+        $.extend( true, $.fn.dataTable.defaults, {
+            "bSortClasses": false,
+            "sDom": "t<'row-fluid'<'span6'i><'span6'p>>l",
+            "sPaginationType": "bootstrap",
+            "bInfo": true,
+            "oLanguage": {
+                'sEmptyTable': "No data available in table",
+                'sLengthMenu': '_MENU_ rows',
+                'sSearch': ''
+            }
+        } );
+        
+        /* This causes problems with some languages. ie, fr_CA
+		var appLocale = 'en';
+        $.extend( true, $.fn.datepicker.defaults, {
+			language: appLocale.replace("_", "-")
+        });
+        */
+
+                    <!-- Facebook Pixel Code -->
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '939199819483886');
+            fbq('track', "PageView");
+
+            (function() {
+              var _fbq = window._fbq || (window._fbq = []);
+              if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+             }
+            })();
+            
+        
+        window._fbq = window._fbq || [];
+            
+    </script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+	
+
+<link href="https://app.invoiceninja.com/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> 
+<link href="https://app.invoiceninja.com/css/style.css" rel="stylesheet" type="text/css"/>    
+
+<style type="text/css">
+    body {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .modal-header {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    .modal-header h4 {
+        margin:0;
+    }
+    .modal-header img {
+        float: left; 
+        margin-right: 20px;
+    }
+    .form-signin {
+        max-width: 400px;
+        margin: 0 auto;
+        background: #fff;
+    }
+    p.link a {
+        font-size: 11px;
+    }
+    .form-signin .inner {
+        padding: 20px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+    .form-signin .form-control {
+        margin-bottom: 17px !important;
+    }
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+
+    .modal-header a:link,
+    .modal-header a:visited,
+    .modal-header a:hover,
+    .modal-header a:active {
+        text-decoration: none;
+        color: white;
+    }
+
+</style>
+
+
+</head>
+
+<body class="body">
+
+      
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-46031341-1', 'auto');        
+        ga('send', 'pageview');
+
+        function trackEvent(category, action) {
+            ga('send', 'event', category, action, this.src);
+        }
+    </script>
+        
+<div class="container">
+
+    <div class="container">
+  <div class="alert alert-warning" id="keepAliveDiv" style="display:none">
+    This page will expire soon, <a href="#" onclick="keepAlive()">click here</a> to keep working
+  </div>
+</div>
+
+<script type="text/javascript">
+    var redirectTimer = null;
+    function startWarnSessionTimeout() {
+        var oneMinute = 1000 * 60;
+        var twoMinutes = oneMinute * 2;
+        var twoHours = oneMinute * 120;
+        setTimeout(function() {
+            warnSessionExpring();
+        }, (twoHours - twoMinutes));
+    }
+
+    function warnSessionExpring() {
+        $("#keepAliveDiv").fadeIn();
+        redirectTimer = setTimeout(function() {
+            NINJA.formIsChanged = false;
+            window.location = 'https://app.invoiceninja.com/login';
+        }, 1000 * 60);
+    }
+
+    // keep the token cookie valid to prevent token mismatch errors
+    function keepAlive() {
+        clearTimeout(redirectTimer);
+        $('#keepAliveDiv').fadeOut();
+        $.get('https://app.invoiceninja.com/keep_alive');
+        startWarnSessionTimeout();
+    }
+
+    $(function() {
+        if ($('form.warn-on-exit, form.form-signin').length > 0) {
+            startWarnSessionTimeout();
+        }
+    });
+</script>
+    <form accept-charset="utf-8" class="form-horizontal form-signin" action="/dashboard">
+    
+
+    <div class="modal-header">
+        
+            <img src="img/symph.gif" style="height:55px;width:auto;padding-top:2px;margin-top: -18px; margin-left: 0px;"/>      
+            <h4>Symph Monitor | Account Login</h4>
+        
+    </div>    
+        <div class="inner">
+            <p>
+                <input required="true" class="form-control" placeholder="Email address" id="email" type="email" name="email">
+                <input required="true" class="form-control" placeholder="Password" id="password" type="password" name="password">
+                <input class="form-control" type="hidden" name="remember" value="true">
+            </p>
+
+            <p><button type='submit' class='btn btn-success btn-lg btn-block' id='loginButton'>Login</button></p>
+
+                            <center><p>- or -</p></center>
+                <div class="row">
+                                    <div class="col-md-6">
+                        <a href="#" class="btn btn-primary btn-block social-login-button" id="googleLoginButton">
+                            <i class="fa fa-google"></i> &nbsp;
+                            Google
+                        </a><br/>
+                    </div>
+                                    <div class="col-md-6">
+                        <a href="#" class="btn btn-primary btn-block social-login-button" id="facebookLoginButton">
+                            <i class="fa fa-facebook"></i> &nbsp;
+                            Facebook
+                        </a><br/>
+                    </div>
+                           
+                                </div>
+            
+            <p class="link">
+                <a href="#">Forgot your password?</a>
+                <!--<a href="https://www.invoiceninja.com/knowledgebase/" target="_blank" class="pull-right">Knowledge Base</a>-->
+            </p>
+
+
+            
+            
+            
+            
+        </div>
+
+        <input class="form-control" type="hidden" name="_token" value="r0E7TErJQagVJ55QHAvSkZFl2OkWVSlbnNgWtI96"></form>
+
+        <p/>
+        <center>
+            <!--
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=635126583203143";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+            <div class="fb-follow" data-href="https://www.facebook.com/invoiceninja" data-colorscheme="light" data-layout="button" data-show-faces="false"></div>&nbsp;&nbsp;
+
+            <a href="https://twitter.com/invoiceninja" class="twitter-follow-button" data-show-count="false" data-related="hillelcoren" data-size="medium">Follow @invoiceninja</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+            <iframe src="https://ghbtns.com/github-btn.html?user=hillelcoren&repo=invoice-ninja&type=star&count=false" frameborder="0" scrolling="0" width="50px" height="20px"></iframe>
+            -->
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <!--
+            <iframe allowTransparency="true" frameborder="0" scrolling="no" src="https://bitnami.com/product/invoice-ninja/widget" style="border:none;width:230px; height:100px;"></iframe>
+            -->
+            
+        </center>
+
+    </div>
+
+
+    <script type="text/javascript">
+        $(function() {
+            if ($('#email').val()) {
+                $('#password').focus();
+            } else {
+                $('#email').focus();
+            }
+
+            /*
+            var authProvider = localStorage.getItem('auth_provider');
+            if (authProvider) {
+                $('#' + authProvider + 'LoginButton').removeClass('btn-primary').addClass('btn-success');
+            }
+            */
+        })
+
+    </script>
+
+
+<script type="text/javascript">
+    NINJA.formIsChanged = false;
+
+    $(function() {
+        $('form.warn-on-exit input, form.warn-on-exit textarea, form.warn-on-exit select').change(function() {
+            NINJA.formIsChanged = true;
+        }); 
+
+        
+            });
+    $('form').submit(function() {
+        NINJA.formIsChanged = false;
+    });
+    $(window).on('beforeunload', function() {
+        if (NINJA.formIsChanged) {
+            return "You have unsaved changes";
+        } else {
+            return undefined;
+        }
+    }); 
+    function openUrl(url, track) {
+        trackEvent('/view_link', track ? track : url);
+        window.open(url, '_blank');
+    }
+</script> 
+
+</body>
+
+</html>

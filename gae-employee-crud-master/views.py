@@ -7,7 +7,8 @@ import os
 
 from datetime import datetime
 from logics import Employee
-from logic import Expense
+from logicexpense import Expense
+from logicincome import Income
 
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -221,5 +222,95 @@ class Edit2Handler(webapp2.RequestHandler):
         input_notes = self.request.get('notes').strip()
 
         emp = Expense()
-        emp.save_employee (input_date_spent,input_description,input_supplier,input_amount,input_tax_type,input_payment_method,input_account,input_client_project,input_receipt_image,input_notes,long(input_id))
-        self.redirect('/index2')
+        emp.save_expense (input_date_spent,input_description,input_supplier,input_amount,input_tax_type,input_payment_method,input_account,input_client_project,input_receipt_image,input_notes,long(input_id))
+        self.redirect('/edit2')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class MainIncomeHandler(webapp2.RequestHandler):
+    def get(self):
+        emp = Income() 
+        template_values = {'employees' : emp.list_income()}
+        template = jinja_environment.get_template('template/indexincome.html')
+        self.response.out.write(template.render(template_values))
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            if self.request.POST.get('delete'): #if user clicks "Delete" button
+                employee_ids = self.request.get('employee_id',allow_multiple=True) #allow_multiple=True so that it reads multiple key into list.
+                emp = Income()
+                emp.delete_income(employee_ids)
+                self.redirect('/indexincome')
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+
+class CreateIncomeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            template = jinja_environment.get_template('template/createincome.html')
+            self.response.out.write(template.render())
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+    def post(self):
+        #get all input values
+        input_income_date = self.request.get('income_date').strip()
+        input_income_type = self.request.get('income_type').strip()
+        input_account_name = self.request.get('account_name').strip()
+        input_reference_no = self.request.get('reference_no').strip()
+        input_payment_method = self.request.get('payment_method').strip()
+        input_payer = self.request.get('payer').strip()
+        input_amount = self.request.get('amount').strip()
+        input_notes = self.request.get('notes').strip()
+        
+        emp = Income()
+        emp.save_income(input_income_date,input_income_type,input_account_name,input_reference_no,input_payment_method,input_payer,input_amount,input_notes,0)
+        self.redirect('/createincome')
+
+
+class EditIncomeHandler(webapp2.RequestHandler):
+    def get (self):
+        user = users.get_current_user()
+        if user:
+            #get ID of entity Key
+            emp_k = db.Key.from_path('CompanyModel','Bellucci','IncomeModel',long(self.request.get('id')))
+            #get entity from key instance
+            emp = db.get(emp_k)
+            
+            template_values = {'employee' : emp}
+            template = jinja_environment.get_template('template/editincome.html')
+            self.response.out.write(template.render(template_values))
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+    def post(self):
+        #get all input values
+        input_id = self.request.get('id')
+        input_income_date = self.request.get('income_date').strip()
+        input_income_type = self.request.get('income_type').strip()
+        input_account_name = self.request.get('account_name').strip()
+        input_reference_no = self.request.get('reference_no').strip()
+        input_payment_method = self.request.get('payment_method').strip()
+        input_payer = self.request.get('payer').strip()
+        input_amount = self.request.get('amount').strip()
+        input_notes = self.request.get('notes').strip()
+
+        emp = Income()
+        emp.save_income (input_income_date,input_income_type,input_account_name,input_reference_no,input_payment_method,input_payer,input_amount,input_notes,long(input_id))
+        self.redirect('/editincome')

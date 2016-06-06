@@ -8,5 +8,8 @@ app = webapp2.WSGIApplication([
     ('/edit', EditHandler),
     ('/index2', Main2Handler),
     ('/create2', Create2Handler),
-    ('/edit2', Edit2Handler)
+    ('/edit2', Edit2Handler),
+    ('/indexincome', MainIncomeHandler),
+    ('/createincome', CreateIncomeHandler),
+    ('/editincome', EditIncomeHandler)
 ], debug=True)

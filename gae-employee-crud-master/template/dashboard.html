@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+            <title>Dashboard | Symph Finance</title> 
+   
+        <link href="img/symph.gif" rel="shortcut icon" type="image/gif">
+
+    <meta charset="utf-8">
+    <meta property="og:site_name" content="Invoice Ninja" />
+    <meta property="og:url" content="https://app.invoiceninja.com" />
+    <meta property="og:title" content="Invoice Ninja" />
+    <meta property="og:image" content="https://app.invoiceninja.com/images/round_logo.png" />
+    <meta property="og:description" content="Simple, Intuitive Invoicing." />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="zKMIOc5D13uWST6OuKmnu5VV7tSc5uYk5Ab0A5vo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-config" content="none"/> 
+
+    <link rel="canonical" href="https://app.invoiceninja.com/dashboard" />
+
+    <script src="https://app.invoiceninja.com/built.js?no_cache=2.5.2.1" type="text/javascript"></script>    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  
+
+   <!-- <script type="text/javascript">
+        var NINJA = NINJA || {};
+        NINJA.fontSize = 9;
+        NINJA.isRegistered = true;
+        
+        window.onerror = function (errorMsg, url, lineNumber, column, error) {
+            if (errorMsg.indexOf('Script error.') > -1) {
+                return;
+            }
+
+            try {
+                // Use StackTraceJS to parse the error context 
+                if (error) {
+                    var message = error.message ? error.message : error;
+                    StackTrace.fromError(error).then(function(result) {
+                        var gps = new StackTraceGPS();
+                        gps.findFunctionName(result[0]).then(function(result) {
+                            logError(errorMsg + ': ' + JSON.stringify(result));
+                        });
+                    });
+                } else {
+                    logError(errorMsg);
+                }
+
+                trackEvent('/error', errorMsg);
+            } catch(err) {}
+
+            return false;
+        }
+
+        function logError(message) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://app.invoiceninja.com/log_error',
+                data: 'error='+encodeURIComponent(message)+'&url='+encodeURIComponent(window.location)
+            });
+        }
+
+        /* Set the defaults for DataTables initialisation */
+        $.extend( true, $.fn.dataTable.defaults, {
+            "bSortClasses": false,
+            "sDom": "t<'row-fluid'<'span6'i><'span6'p>>l",
+            "sPaginationType": "bootstrap",
+            "bInfo": true,
+            "oLanguage": {
+                'sEmptyTable': "No data available in table",
+                'sLengthMenu': '_MENU_ rows',
+                'sSearch': ''
+            }
+        } );
+        
+        /* This causes problems with some languages. ie, fr_CA
+    var appLocale = 'en';
+        $.extend( true, $.fn.datepicker.defaults, {
+      language: appLocale.replace("_", "-")
+        });
+        */
+
+                    <!-- Facebook Pixel Code -->
+            <!--!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '939199819483886');
+            fbq('track', "PageView");
+
+            (function() {
+              var _fbq = window._fbq || (window._fbq = []);
+              if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+             }
+            })();
+            
+        
+        window._fbq = window._fbq || [];
+            
+    </script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,700,900,100|Roboto+Slab:400,300,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="https://app.invoiceninja.com/css/built.css?no_cache=2.5.2.1" rel="stylesheet" type="text/css"/>    
+
+  <style type="text/css">
+
+    body {
+      background-color: #EEEEEE;
+      padding-top: 114px; 
+    }
+
+    /* Fix for header covering stuff when the screen is narrower */
+    @media  screen and (min-width: 1200px) {
+      body {
+        padding-top: 56px; 
+      }
+    }
+
+    @media  screen and (max-width: 768px) {
+      body {
+        padding-top: 56px; 
+      }
+    }
+
+    
+  </style>
+
+<script type="text/javascript">
+
+  function setTheme(id)
+  {
+    $('#theme_id').val(id);
+    $('form.themeForm').submit();
+  }
+
+  
+  function handleSignedUp() {
+      localStorage.setItem('guest_key', '');
+      fbq('track', 'CompleteRegistration');
+      window._fbq.push(['track', '6033639211517', {'value':'0.00','currency':'USD'}]);
+      trackEvent('/account', '/signed_up');
+  }
+
+  function checkForEnter(event)
+  {
+    if (event.keyCode === 13){
+      event.preventDefault();               
+      validateServerSignUp();
+      return false;
+    }
+  }
+
+  function logout(force)
+  {
+    if (force) {
+      NINJA.formIsChanged = false;
+    }
+
+    if (force || NINJA.isRegistered) {            
+      window.location = 'https://app.invoiceninja.com/logout';
+    } else {
+      $('#logoutModal').modal('show');  
+    }
+  }
+
+  function showSignUp() {
+    $('#signUpModal').modal('show');
+  }
+
+  function hideSignUp() {
+    $('#signUpModal').modal('hide');
+  }
+
+  NINJA.proPlanFeature = '';
+  function showProPlan(feature) {
+    $('#proPlanModal').modal('show');
+    fbq('track', 'InitiateCheckout');
+    trackEvent('/account', '/show_pro_plan/' + feature);
+    NINJA.proPlanFeature = feature;
+  }
+
+  function hideProPlan() {
+    $('#proPlanModal').modal('hide');
+  }
+
+  function buyProduct(affiliateKey, productId) {
+    window.open('https://app.invoiceninja.com/license?affiliate_key=' + affiliateKey + '&product_id=' + productId + '&return_url=' + window.location);
+  }
+
+    function submitProPlan() {
+    fbq('track', 'AddPaymentInfo');
+    trackEvent('/account', '/submit_pro_plan/' + NINJA.proPlanFeature);
+    if (NINJA.isRegistered) {      
+      $.ajax({
+        type: 'POST',
+        url: 'https://app.invoiceninja.com/account/go_pro',
+        success: function(result) { 
+          NINJA.formIsChanged = false;
+          window.location = '/payment/' + result;
+        }
+      });     
+    } else {
+      $('#proPlanModal').modal('hide');    
+      $('#go_pro').val('true');
+      showSignUp();
+    }
+  }
+  
+  function hideMessage() {
+    $('.alert-info').fadeOut();
+    $.get('/hide_message', function(response) {
+      console.log('Reponse: %s', response);
+    });
+  }
+
+  function wordWrapText(value, width)
+  {
+        return value;
+      }
+
+  function setSignupEnabled(enabled) {
+    $('.signup-form input[type=text]').prop('disabled', !enabled);
+    if (enabled) {
+        $('.signup-form a.btn').removeClass('disabled');
+    } else {
+        $('.signup-form a.btn').addClass('disabled');
+    }
+  }
+
+  function setSocialLoginProvider(provider) {
+    localStorage.setItem('auth_provider', provider);
+  }
+
+  window.loadedSearchData = false;
+  function showSearch() {
+    $('#search').typeahead('val', '');
+    $('#navbar-options').hide();
+    $('#search-form').show();
+    $('#search').focus();
+    
+    if (!window.loadedSearchData) {
+        trackEvent('/activity', '/search');
+        $.get('https://app.invoiceninja.com/account/getSearchData', function(data) {
+          $('#search').typeahead({
+            hint: true,
+            highlight: true,
+          }
+                                        ,{
+              name: 'data',
+                  limit: 3,
+            display: 'value',
+            source: searchData(data['clients'], 'tokens', true),
+            templates: {
+              header: '&nbsp;<span style="font-weight:600;font-size:16px">Clients</span>'
+            }
+          }
+                    ,{
+              name: 'data',
+                  limit: 3,
+            display: 'value',
+            source: searchData(data['contacts'], 'tokens', true),
+            templates: {
+              header: '&nbsp;<span style="font-weight:600;font-size:16px">Contacts</span>'
+            }
+          }
+                    ,{
+              name: 'data',
+                  limit: 3,
+            display: 'value',
+            source: searchData(data['invoices'], 'tokens', true),
+            templates: {
+              header: '&nbsp;<span style="font-weight:600;font-size:16px">Invoices</span>'
+            }
+          }
+                    ,{
+              name: 'data',
+                  limit: 3,
+            display: 'value',
+            source: searchData(data['quotes'], 'tokens', true),
+            templates: {
+              header: '&nbsp;<span style="font-weight:600;font-size:16px">Quotes</span>'
+            }
+          }
+                    ,{
+              name: 'data',
+                  limit: 3,
+            display: 'value',
+            source: searchData(data['navigation'], 'tokens', true),
+            templates: {
+              header: '&nbsp;<span style="font-weight:600;font-size:16px">Navigation</span>'
+            }
+          }
+                    ).on('typeahead:selected', function(element, datum, name) {
+            window.location = datum.url;
+          }).focus(); 
+          window.loadedSearchData = true;
+        });
+    }
+  }
+  
+  function hideSearch() {
+    $('#search-form').hide();
+    $('#navbar-options').show();
+  }
+
+  $(function() {
+    window.setTimeout(function() { 
+        $(".alert-hide").fadeOut();
+    }, 3000);
+
+    $('#search').blur(function(event){
+        if (window.loadedSearchData) {
+            hideSearch();
+        }
+    });
+
+    if (isStorageSupported()) {
+          }
+
+    
+    
+    $('ul.navbar-settings, ul.navbar-search').hover(function () {
+        if ($('.user-accounts').css('display') == 'block') {
+            $('.user-accounts').dropdown('toggle');
+        }
+    });
+
+    
+    
+    // Ensure terms is checked for sign up form
+    
+    // Focus the search input if the user clicks forward slash
+    $('body').keypress(function(event) {
+        if (event.which == 47 && !$('*:focus').length) {
+            event.preventDefault();
+            showSearch();
+        }
+    });
+
+  });
+
+</script>  
+
+
+</head>
+
+<body class="body">
+
+      
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-46031341-1', 'auto');        
+        ga('send', 'pageview');
+
+        function trackEvent(category, action) {
+            ga('send', 'event', category, action, this.src);
+        }
+    </script>
+        
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a  class='navbar-brand' target="_blank">
+                <img src="img/symph.gif" style="height:59px;width:auto;padding-top:2px;margin-top: -20px; margin-left: 0px;"/>
+      </a>      
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav" style="font-weight: bold">
+        <li class="dropdown ">
+                   <a href="#" class="dropdown-toggle">Payrun</a><ul class="dropdown-menu" id="menu1"><li><a href="newpayrun.html">New Payrun</a></li><li class="divider"></li><li><a href="payslip.html">Payslip</a></li></ul></li>
+        <li class="dropdown ">
+                   <a href="chartsofaccounts.html" class="dropdown-toggle">Charts Of Account</a><ul class="dropdown-menu" id="menu1"><li><a href="chartofaccounts_expense.html">Expense Accounts</a></li><li class="divider"></li><li><a href="chartofaccount_income.html">Income Accounts</a></li></ul></li>
+        
+        <li class="dropdown ">
+                   <a href="#" class="dropdown-toggle">Income</a><ul class="dropdown-menu" id="menu1"><li><a href="#">Expense Accounts</a></li><li class="divider"></li><li><a href="#">Income Accounts</a></li></ul></li>
+        <li class="dropdown ">
+                   <a href="#" class="dropdown-toggle">Budget</a><ul class="dropdown-menu" id="menu1"><li><a href="#">Expense Accounts</a></li><li class="divider"></li><li><a href="#">Income Accounts</a></li></ul></li>
+        <li class="active"><a href="dashboard.html" >Dashboard</a></li>
+        <!--<li class="dropdown ">
+                   <a href="https://app.invoiceninja.com/clients" class="dropdown-toggle">Clients</a><ul class="dropdown-menu" id="menu1"><li><a href="https://app.invoiceninja.com/clients/create">New Client</a></li><li class="divider"></li><li><a href="https://app.invoiceninja.com/credits">Credits</a></li><li><a href="https://app.invoiceninja.com/credits/create">New Credit</a></li></ul></li>
+        <li class="dropdown ">
+                   <a href="https://app.invoiceninja.com/tasks" class="dropdown-toggle">Tasks</a><ul class="dropdown-menu" id="menu1"><li><a href="https://app.invoiceninja.com/tasks/create">New Task</a></li></ul></li>-->
+        <li class="dropdown ">
+                   <a href="expenses.html" class="dropdown-toggle">Expenses</a><ul class="dropdown-menu" id="menu1"><li><a href="https://app.invoiceninja.com/expenses/create">New Expense</a></li><li class="divider"></li><li><a href="https://app.invoiceninja.com/vendors">Vendors</a></li><li><a href="https://app.invoiceninja.com/vendors/create">New Vendor</a></li></ul></li>
+        <li class="dropdown ">
+                   <a href="invoices.html" lass="dropdown-toggle">Invoices</a><ul class="dropdown-menu" id="menu1"><li><a href="createinvoice.html">New Invoice</a></li><li class="divider"></li><li><a href="recurringinvoices.html">Recurring Invoices</a></li><li><a href="https://app.invoiceninja.com/recurring_invoices/create">New Recurring Invoice</a></li></ul></li>
+        <!--<li class="dropdown ">
+                   <a href="https://app.invoiceninja.com/payments" class="dropdown-toggle">Payments</a><ul class="dropdown-menu" id="menu1"><li><a href="https://app.invoiceninja.com/payments/create">New Payment</a></li></ul></li>-->
+      </ul>
+
+
+      <div id="navbar-options">
+      <div class="navbar-form navbar-right">
+                              <!--<button type='button' class='btn btn-success btn-sm' id='proPlanButton' onclick='showProPlan(&quot;&quot;)' style='max-width:100px;overflow:hidden'>Go Pro</button> &nbsp;-->
+                  
+        <div class="btn-group user-dropdown">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+            <div id="myAccountButton" class="ellipsis nav-account-name" style="max-width:100px;">
+                                    Ehmz Tangpuz
+                              <span class="caret"></span>
+            </div>
+            <span class="glyphicon glyphicon-user nav-account-icon" style="padding-left:0px" 
+                title="Symph"/>            
+          </button>     
+          <ul class="dropdown-menu user-accounts">
+                                                                                                                    
+            <a href="#">
+            
+                    <div class="pull-left" style="width: 40px; min-height: 40px; margin-right: 16px">&nbsp;</div>
+        
+                    <b>
+        
+        <div class="account" style="padding-right:90px">Symph</div>
+        <div class="user" style="padding-right:90px">Admin</div>
+
+                    
+            </b>
+            </a>
+
+</li>                                                                                                                                                                        <li style="margin-top: 4px; margin-bottom: 4px; min-width: 220px; cursor: pointer">
+                        <a href="#">
+            
+                    <div class="pull-left" style="width: 40px; min-height: 40px; margin-right: 16px">&nbsp;</div>
+        
+        
+        <!--<div class="account" style="padding-right:90px">Guest</div>
+        <div class="user" style="padding-right:90px">Guest</div>
+
+            </a>
+
+</li>                                                                                <li style="margin-top: 4px; margin-bottom: 4px; min-width: 220px; cursor: pointer">
+                        <a href="https://app.invoiceninja.com/switch_account/82101">
+            
+                    <div class="pull-left" style="width: 40px; min-height: 40px; margin-right: 16px">&nbsp;</div>
+        
+        
+        <div class="account" style="padding-right:90px">Guest</div>
+        <div class="user" style="padding-right:90px">Guest</div>
+
+            </a>
+
+</li>                                                                                                                    <li style="margin-top: 4px; margin-bottom: 4px; min-width: 220px; cursor: pointer">
+                        <a href="https://app.invoiceninja.com/switch_account/82107">
+            
+                    <div class="pull-left" style="width: 40px; min-height: 40px; margin-right: 16px">&nbsp;</div>
+        
+        
+        <div class="account" style="padding-right:90px">Guest</div>
+        <div class="user" style="padding-right:90px">Guest</div>
+
+            </a>
+
+</li>                                                                                <li style="margin-top: 4px; margin-bottom: 4px; min-width: 220px; cursor: pointer">
+                        <a href="https://app.invoiceninja.com/switch_account/82108">
+            
+                    <div class="pull-left" style="width: 40px; min-height: 40px; margin-right: 16px">&nbsp;</div>
+        
+        
+        <div class="account" style="padding-right:90px">Guest</div>
+        <div class="user" style="padding-right:90px">Guest</div>-->
+
+            </a>
+
+</li>                                                            
+            <li class="divider"></li>
+                                            <!--<li><a href="https://app.invoiceninja.com/manage_companies">Manage Companies</a></li>-->
+                                      <li><a href="#" onclick="logout()">Log Out</a></li>
+          </ul>
+        </div>
+
+      </div>  
+      
+      <ul class="nav navbar-nav navbar-right navbar-settings"> 
+        <li class="dropdown">
+                      <a href="https://app.invoiceninja.com/settings" class="dropdown-toggle">
+              <span class="glyphicon glyphicon-cog" title="Settings"/>
+            </a>
+            <ul class="dropdown-menu">
+                                <li><a href="https://app.invoiceninja.com/settings/company_details">Company Details</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/user_details">User Details</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/localization">Localization</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/online_payments">Online Payments</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/bank_accounts">Credit Cards &amp; Banks</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/tax_rates">Tax Rates</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/products">Product Library</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/notifications">Email Notifications</a></li>
+                                <li><a href="https://app.invoiceninja.com/settings/import_export">Import | Export | Cancel</a></li>
+                            <li><a href="https://app.invoiceninja.com/settings/invoice_settings">Advanced Settings</a></li>
+            </ul>
+                  </li>
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right navbar-search"> 
+        <li class="dropdown">
+          <a href="#" onclick="showSearch()">
+            <span class="glyphicon glyphicon-search" title="Search"/>
+          </a>
+          <ul class="dropdown-menu">                        
+                                                                        <li><a href="https://app.invoiceninja.com/clients/1">Client: Paradise</a></li>  
+                                                                                <li><a href="https://app.invoiceninja.com/invoices/3/edit">Invoice: 0011 - z</a></li> 
+                                                                                <li><a href="https://app.invoiceninja.com/clients/3">Client: z</a></li> 
+                                                                                <li><a href="https://app.invoiceninja.com/invoices/2/edit">Invoice: 0002 - i</a></li> 
+                                                                                <li><a href="https://app.invoiceninja.com/clients/2">Client: i</a></li> 
+                                                                                <li><a href="https://app.invoiceninja.com/invoices/1/edit">Invoice: 0001 - Paradise</a></li>  
+                                                          </ul>
+        </li>
+      </ul>
+      </div>
+
+      <form id="search-form" class="navbar-form navbar-right" role="search" style="display:none">
+        <div class="form-group">
+          <input type="text" id="search" style="width: 240px;padding-top:0px;padding-bottom:0px" 
+            class="form-control" placeholder="Search: shortcut is /">
+        </div>
+      </form>
+      
+      
+    </div><!-- /.navbar-collapse -->
+
+
+  </div>
+</nav>
+
+<br/>
+<div class="container">
+  
+  <div class="container">
+  <div class="alert alert-warning" id="keepAliveDiv" style="display:none">
+    This page will expire soon, <a href="#" onclick="keepAlive()">click here</a> to keep working
+  </div>
+</div>
+
+<script type="text/javascript">
+    var redirectTimer = null;
+    function startWarnSessionTimeout() {
+        var oneMinute = 1000 * 60;
+        var twoMinutes = oneMinute * 2;
+        var twoHours = oneMinute * 120;
+        setTimeout(function() {
+            warnSessionExpring();
+        }, (twoHours - twoMinutes));
+    }
+
+    function warnSessionExpring() {
+        $("#keepAliveDiv").fadeIn();
+        redirectTimer = setTimeout(function() {
+            NINJA.formIsChanged = false;
+            window.location = 'https://app.invoiceninja.com/dashboard';
+        }, 1000 * 60);
+    }
+
+    // keep the token cookie valid to prevent token mismatch errors
+    function keepAlive() {
+        clearTimeout(redirectTimer);
+        $('#keepAliveDiv').fadeOut();
+        $.get('https://app.invoiceninja.com/keep_alive');
+        startWarnSessionTimeout();
+    }
+
+    $(function() {
+        if ($('form.warn-on-exit, form.form-signin').length > 0) {
+            startWarnSessionTimeout();
+        }
+    });
+</script>
+  
+  
+  
+      <ol class="breadcrumb"><li class='active'>Dashboard</li></ol>
+  
+  
+<div class="row">
+    <div class="col-md-4">  
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="https://app.invoiceninja.com/images/totalinvoices.png" 
+                    class="in-image" style="float:left"/>  
+                <div style="overflow:hidden">
+                    <div class="in-thin">
+                        Total Revenue
+                    </div>
+                    <div class="in-bold">
+                                                                                    $0.00<br/>
+                                                            P 0.00<br/>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="img/averageinvoice.gif" style="height:90px;width:auto;padding-top:2px;margin-top: -5px; margin-left: 0px;"  
+                    class="in-image" style="float:left"/>  
+                <div style="overflow:hidden">
+                    <div class="in-thin">
+                        Average Invoice
+                    </div>
+                    <div class="in-bold">
+                                                                                    $300,000.00<br/>
+                                                            P 339,500.00<br/>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="img/outstanding.png" style="height:80px;width:auto;padding-top:2px;margin-top: 0px; margin-left: 0px;"  
+                    class="in-image" style="float:left"/>  
+                <div style="overflow:hidden">
+                    <div class="in-thin">
+                        Outstanding
+                    </div>
+                    <div class="in-bold">
+                                                                                    $600,000.00<br/>
+                                                            P 339,500.00<br/>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p>&nbsp;</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default dashboard" style="height:320px">
+            <div class="panel-heading" style="background-color:#0b4d78 !important">
+                <h3 class="panel-title in-bold-white">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i> Activity
+                    <div class="pull-right" style="font-size:14px;padding-top:4px">
+                        0 invoices sent
+                    </div>
+                </h3>
+            </div>
+            <ul class="panel-body list-group" style="height:276px;overflow-y:auto;">
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created client <a href="https://app.invoiceninja.com/clients/3">z</a>
+                </li>
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created invoice <a href="https://app.invoiceninja.com/invoices/3/edit">0011</a>
+                </li>
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created client <a href="https://app.invoiceninja.com/clients/2">i</a>
+                </li>
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created invoice <a href="https://app.invoiceninja.com/invoices/2/edit">0002</a>
+                </li>
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created client <a href="https://app.invoiceninja.com/clients/1">Paradise</a>
+                </li>
+                                <li class="list-group-item">
+                    <span style="color:#888;font-style:italic">May 23, 2016:</span>
+                    Ehmz Tangpuz created invoice <a href="https://app.invoiceninja.com/invoices/1/edit">0001</a>
+                </li>
+                            </ul>
+        </div>  
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default dashboard" style="height:320px;">
+            <div class="panel-heading" style="margin:0; background-color: #f5f5f5 !important;">
+                <h3 class="panel-title" style="color: black !important">
+                    <i class="glyphicon glyphicon-ok-sign"></i> Recent Payments
+                </h3>
+            </div>
+            <div class="panel-body" style="height:274px;overflow-y:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Invoice #</th>
+                        <th>Client</th>
+                        <th>Payment Date</th>
+                        <th>Amount</th>
+                    </thead>
+                    <tbody>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">  
+        <div class="panel panel-default dashboard" style="height:320px;">
+            <div class="panel-heading" style="margin:0; background-color: #f5f5f5 !important;">
+                <h3 class="panel-title" style="color: black !important">
+                    <i class="glyphicon glyphicon-time"></i> Upcoming Invoices
+                </h3>
+            </div>
+            <div class="panel-body" style="height:274px;overflow-y:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Invoice #</th>
+                        <th>Client</th>
+                        <th>Due Date</th>
+                        <th>Balance Due</th>
+                    </thead>
+                    <tbody>
+                                                                                    <tr>
+                                    <td><a href="https://app.invoiceninja.com/invoices/2">0002</a></td>
+                                                                            <td><a href="https://app.invoiceninja.com/clients/2">i</a></td>
+                                                                        <td>Jun 30, 2016</td>
+                                    <td>$600,000.00</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <td><a href="https://app.invoiceninja.com/invoices/1">0001</a></td>
+                                                                            <td><a href="https://app.invoiceninja.com/clients/1">Paradise</a></td>
+                                                                        <td>Jul 30, 2016</td>
+                                    <td>P 339,500.00</td>
+                                </tr>
+                                                                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default dashboard" style="height:320px">
+            <div class="panel-heading" style="background-color:#e37329 !important">
+                <h3 class="panel-title in-bold-white">
+                    <i class="glyphicon glyphicon-time"></i> Invoices Past Due
+                </h3>
+            </div>
+            <div class="panel-body" style="height:274px;overflow-y:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Invoice #</th>
+                        <th>Client</th>
+                        <th>Due Date</th>
+                        <th>Balance Due</th>
+                    </thead>
+                    <tbody>
+                                            </tbody>
+                </table>
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        $('.normalDropDown:not(.dropdown-toggle)').click(function() {
+            window.location = 'https://app.invoiceninja.com/invoices/create';
+        });
+    });
+</script>
+
+    
+
+</div>
+
+
+  <div class="modal fade" id="proPlanModal" tabindex="-1" role="dialog" aria-labelledby="proPlanModalLabel" aria-hidden="true">
+    <div class="modal-dialog large-dialog">
+      <div class="modal-content pro-plan-modal">
+
+        <div class="pull-right">
+            <img onclick="hideProPlan()" class="close" src="https://app.invoiceninja.com/images/pro_plan/close.png"/>
+        </div>        
+        <div class="row">
+
+            <div class="col-md-7 left-side">
+                <center>
+                    <h2>NINJA PRO</h2>
+                    <img class="img-responsive price" alt="Only $50 Per Year" src="https://app.invoiceninja.com/images/pro_plan/price.png"/>
+                                            <a class="button" href="#" onclick="submitProPlan()">Upgrade Now!</a>
+                                    </center>
+            </div>
+            <div class="col-md-5">
+                <ul>
+                    <li>Create Unlimited Clients</li>
+                    <li>Access to 10 Beautiful Invoice Designs</li>
+                    <li>Custom URLs - &quot;YourBrand.InvoiceNinja.com&quot;</li>
+                    <li>Remove &quot;Created by Invoice Ninja&quot;</li>
+                    <li>Multi-user Access &amp; Activity Tracking</li>
+                    <li>Create Quotes &amp; Pro-forma Invoices</li>
+                    <li>Customize Invoice Field Titles &amp; Numbering</li>
+                    <li>Option to Attach PDFs to Client Emails</li>
+                </ul>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<br/>
+<div class="container">
+     <!-- Your free trial lasts 9 more days, <a href="javascript:submitProPlan()">click here</a> to upgrade now.-->
+  
+<p>&nbsp;</p>
+
+
+
+<script type="text/javascript">
+    NINJA.formIsChanged = false;
+
+    $(function() {
+        $('form.warn-on-exit input, form.warn-on-exit textarea, form.warn-on-exit select').change(function() {
+            NINJA.formIsChanged = true;
+        }); 
+
+        
+            });
+    $('form').submit(function() {
+        NINJA.formIsChanged = false;
+    });
+    $(window).on('beforeunload', function() {
+        if (NINJA.formIsChanged) {
+            return "You have unsaved changes";
+        } else {
+            return undefined;
+        }
+    }); 
+    function openUrl(url, track) {
+        trackEvent('/view_link', track ? track : url);
+        window.open(url, '_blank');
+    }
+</script> 
+
+</body>
+
+</html>

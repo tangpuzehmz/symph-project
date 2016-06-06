@@ -25,7 +25,11 @@ class Employee(object):
 		emp.allowance_2 = allowance_2
 		emp.allowance_3 = allowance_3
 		emp.allowance_4 = allowance_4
-		emp.allowance_calc = allowance_calc
+		total = int(allowance_1)
+		total += int(allowance_2)
+		total += int(allowance_3)
+		total += int(allowance_4)
+		emp.allowance_calc = total
 		emp.deduc_1 = deduc_1
 		emp.deduc_2 = deduc_2
 		emp.deduc_3 = deduc_3

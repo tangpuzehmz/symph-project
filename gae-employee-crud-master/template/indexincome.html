@@ -1,44 +1,45 @@
 {% extends "template/base.html" %}
-{% block title %}Expense Chart{% endblock %}
+{% block title %}List of Employee{% endblock %}
 {% block content %}
             <div class="page-header">
-                <h3>Expense</h3>
+                <h3>List of Income</h3>
             </div>
-            <form id="employee-list" class="form-horizontal" role="form" method="post" action="/index2">
+            <form id="employee-list" class="form-horizontal" role="form" method="post" action="/createincome">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Expense Records
+                        Income Records
                         <div class="pull-right">
-                        <a href="/create2" class="btn btn-success">Add New</a>
+                        <a href="/createincome" class="btn btn-success">Add New</a>
 
                         <input type="submit" class="btn btn-danger" name="delete" value="Delete"></div>
                         <table class="table table-bordered ">
                     </div>
-                        <div class="panel-body">
+                    <div class="panel-body">
+                        
                             <thead>
-                                <tr class = "success">
+                                <tr class="warning">
                                     <th></th>
-                                    <th class="col-md-2">Date Spent</th>
-                                    <th class="col-md-1">Account</th>
-                                    <th class="col-md-2">Payment Type</th>
-                                    <th class="col-md-3">Supplier</th>
-                                    <th class="col-md-3">Client/Project</th>
+                                    <th class="col-md-2">Income Date</th>
+                                    <th class="col-md-2">Income Type</th>
+                                    <th class="col-md-2">Account Name</th>
+                                    <th class="col-md-2">Reference No</th>
+                                    <th class="col-md-2">Payment Method</th>
+                                    <th class="col-md-1">Payer</th>
                                     <th class="col-md-1">Amount</th>
-                                    <th class="col-md-1">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for employee in employees %}
                                 <tr>
                                     <td><input type="checkbox" name="employee_id" value="{{employee.key().id()}}"></td>
-                                    <td>{{ employee.date_spent }}</td>
-                                    <td>{{ employee.account }}</td>
-                                    <td>{{ employee.payment_type }}</td>
-                                    <td>{{ employee.supplier }}</td>
-                                    <td>{{ employee.client_project }}</td>
+                                    <td>{{ employee.income_date }}</td>
+                                    <td>{{ employee.income_type }}</td>
+                                    <td>{{ employee.account_name }}</td>
+                                    <td>{{ employee.reference_no }}</td>
+                                    <td>{{ employee.payment_method }}</td>
                                     <td>{{ employee.amount }}</td>
                                     <!-- get numeric ID of entity key -->
-                                    <td><a href="/edit2?id={{employee.key().id()}}">Edit</a></td>
+                                    <td><a href="/editincome?id={{employee.key().id()}}">Edit</a></td>
                                 </tr>
                                 {% else %}
                                     <tr>

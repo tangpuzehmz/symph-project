@@ -1,41 +1,40 @@
 {% extends "template/base.html" %}
-{% block title %}Employee CRUD - Add{% endblock %}
+{% block title %}Employee CRUD - Edit{% endblock %}
 {% block content %}
             <div class="page-header">
-                <h3>New Employee Payrun</h3>
-
+                <h3>Edit Employee Record</h3>
             </div>
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="/index2" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
                 </div>
                 <div class="panel-body">
-                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/create2">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/edit2">
+                        <input type="hidden" name="id" value = "{{employee.key().id()}}">
             <div class="row">
             <div class="col-md-6">
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Date Spent</label>
+                            <label class="col-lg-4 control-label" for="date_spent">Date Spent</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="date_spent" name="date_spent" placeholder="From" />
+                                <input type="text" class="form-control" id="date_spent" name="date_spent" value="{{employee.date_spent}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Account</label>
+                            <label class="col-lg-4 control-label" for="account">Account</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="account" name="account" placeholder="To" />
+                                <input type="text" class="form-control" id="account" name="account" value="{{employee.account}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Description</label>
-                            <div class="col-lg-8 col-sm-8">
-                                <textarea class="form-control" rows="4" id="description" name="description"></textarea>
+                            <label class="col-lg-4 control-label" for="description">Description</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="description" name="description" value="{{employee.description}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Supplier</label>
+                            <label class="col-lg-4 control-label" for="supplier">Supplier</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="supplier" name="supplier" placeholder="Full Name" autofocus />
+                                <input type="text" class="form-control" id="supplier" name="supplier" value="{{employee.supplier}}" />
                             </div>
                         </div>
 
@@ -43,62 +42,62 @@
             <div class="col-md-6">
 
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Tax Type</label>
+                            <label class="col-lg-4 control-label" for="tax_type">Tax Type</label>
                             <div class="col-lg-4">
-                                <select id="class" class="form-control" name="tax_type">
+                                <select id="tax_type" class="form-control" name="tax_type" value="{{employee.tax_type}}" />
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
                                 </select>
-                            </div>                    
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Payment Method</label>
+                            <label class="col-lg-4 control-label" for="payment_method">Payment Method</label>
                             <div class="col-lg-4">
-                                <select id="class" class="form-control" name="payment_method">
+                                <select id="payment_method" class="form-control" name="payment_method" value="{{employee.payment_method}}" />
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
                                 </select>
-                            </div>                    
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Client/Project</label>
+                            <label class="col-lg-4 control-label" for="client_project">Client/Project</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="client_project" name="client_project" placeholder="Allowance 2" />
+                                <input type="text" class="form-control" id="client_project" name="client_project" value="{{employee.client_project}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Receipt Image</label>
+                            <label class="col-lg-4 control-label" for="receipt_image">Image Receipt</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="receipt_image" name="receipt_image" placeholder="Allowance 3" />
+                                <input type="text" class="form-control" id="receipt_image" name="receipt_image" value="{{employee.receipt_image}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Amount</label>
+                            <label class="col-lg-4 control-label" for="amount">Amount</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="amount" name="amount" />
+                                <input type="text" class="form-control" id="amount" name="amount" value="{{employee.amount}}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Notes</label>
-                            <div class="col-lg-8 col-sm-8">
-                                <textarea class="form-control" rows="2" id="notes" name="notes"></textarea>
+                            <label class="col-lg-4 control-label" for="notes">Notes</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="notes" name="notes" value="{{employee.notes}}" />
                             </div>
                         </div>
-
+            
             </div>
-            </div> 
+            </div>        
 
                         <div class="form-group">
                             <div class="col-lg-offset-6 col-lg-4">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                        </div>
+                        </div> 
                     </form>
                 </div>
             </div>
@@ -106,22 +105,10 @@
 {% block footer_script %}
     <script>
         $(function () {
-            var t = new Date();
-            var dd = t.getDate();
-            if (dd < 10)
-                dd = "0" + dd;
+            $("#date_spent").val('{{employee.date_spent}}'.substr(8,2)+ '-' + '{{employee.date_spent}}'.substr(5,2) + '-' + '{{employee.date_spent}}'.substr(0,4));
+            $("#date_spent").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });    
 
-            var mm = t.getMonth() + 1;
-            if (mm < 10)
-                mm = "0" + mm;
-
-            var yyyy = t.getFullYear();
-
-            $("#date_spent").val(dd + '-' + mm + '-' + yyyy);
-            $("#date_spent").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
-          
         });
-
 
         // jQuery plugin to prevent double submission of forms
         jQuery.fn.preventDoubleSubmission = function () {
@@ -136,11 +123,7 @@
                     $form.data('submitted', true);
                 }
             });
-
-            // Keep chainability
             return this;
         };
-
-        $('form').preventDoubleSubmission();
-    </script>
+    </script>   
 {% endblock %}

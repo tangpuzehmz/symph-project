@@ -1,4 +1,4 @@
-from model import ExpenseModel,CompanyModel
+from modelexpense import ExpenseModel,CompanyModel
 import datetime
 from google.appengine.ext import db
 from google.appengine.api import users

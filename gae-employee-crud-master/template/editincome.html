@@ -1,0 +1,102 @@
+{% extends "template/base.html" %}
+{% block title %}Employee CRUD - Edit{% endblock %}
+{% block content %}
+            <div class="page-header">
+                <h3>Income Record</h3>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/indexincome" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
+                </div>
+                <div class="panel-body">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/editincome">
+                        <input type="hidden" name="id" value = "{{employee.key().id()}}">
+            <div class="row">
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="income_date">Income Date</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="income_date" name="income_date" value="{{employee.income_date}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="income_type">Type of Income</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="income_type" name="income_type" value="{{employee.income_type}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="account_name">Account Name</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="account_name" name="account_name" value="{{employee.account_name}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="reference_no">Reference No</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="reference_no" name="reference_no" value="{{employee.reference_no}}" />
+                            </div>
+                        </div>
+            </div>
+            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="payment_method">Payment Method</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payment_method" name="payment_method" value="{{employee.payment_method}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="payer">Payer</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="payer" name="payer" value="{{employee.payer}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="amount">Amount</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="amount" name="amount" value="{{employee.amount}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="notes">Notes</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="notes" name="notes" value="{{employee.notes}}" />
+                            </div>
+                        </div>
+            </div>
+            </div>        
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+{% block footer_script %}
+    <script>
+        $(function () {
+            $("#income_date").val('{{employee.income_date}}'.substr(8,2)+ '-' + '{{employee.income_date}}'.substr(5,2) + '-' + '{{employee.income_date}}'.substr(0,4));
+            $("#income_date").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });    
+  
+        });
+
+        // jQuery plugin to prevent double submission of forms
+        jQuery.fn.preventDoubleSubmission = function () {
+            $(this).on('submit', function (e) {
+                var $form = $(this);
+
+                if ($form.data('submitted') === true) {
+                    // Previously submitted - don't submit again
+                    e.preventDefault();
+                } else {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+                }
+            });
+            return this;
+        };
+    </script>   
+{% endblock %}

@@ -43,6 +43,18 @@ class ExpenseModel (db.Model):
 	receipt_image = db.StringProperty()
 	notes = db.TextProperty()
 
+
+class IncomeModel (db.Model):
+	timestamp = db.DateTimeProperty(auto_now=True)
+	income_date = db.DateProperty()
+	account_name = db.StringProperty()
+	reference_no = db.StringProperty()
+	income_type = db.StringProperty()
+	payment_method = db.StringProperty()
+	payer = db.StringProperty()
+	amount = db.StringProperty()
+	notes = db.TextProperty()
+
 	
 
 class CompanyModel (db.Model):

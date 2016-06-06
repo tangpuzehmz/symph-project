@@ -2,40 +2,46 @@
 {% block title %}Employee CRUD - Add{% endblock %}
 {% block content %}
             <div class="page-header">
-                <h3>New Employee Payrun</h3>
+                <h3>Create New Income</h3>
 
             </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="/index2" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
+                    <a href="/indexincome" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>  Back to List</a>
                 </div>
                 <div class="panel-body">
-                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/create2">
+                    <form id="employee-entry" class="form-horizontal" role="form" method="post" action="/createincome">
             <div class="row">
             <div class="col-md-6">
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Date Spent</label>
+                            <label class="col-lg-4 control-label" for="">Income Date</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="date_spent" name="date_spent" placeholder="From" />
+                                <input type="text" class="form-control" id="income_date" name="income_date" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Account</label>
+                            <label class="col-lg-4 control-label" for="">Income Type</label>
+                            <div class="col-lg-4">
+                                <select id="income_type" class="form-control" name="income_type">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>                    
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" for="">Account Name</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="account" name="account" placeholder="To" />
+                                <input type="text" class="form-control" id="account_name" name="account_name" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Description</label>
-                            <div class="col-lg-8 col-sm-8">
-                                <textarea class="form-control" rows="4" id="description" name="description"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Supplier</label>
+                            <label class="col-lg-4 control-label" for="">Reference No</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="supplier" name="supplier" placeholder="Full Name" autofocus />
+                                <input type="text" class="form-control" id="reference_no" name="reference_no" autofocus />
                             </div>
                         </div>
 
@@ -43,21 +49,9 @@
             <div class="col-md-6">
 
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Tax Type</label>
-                            <div class="col-lg-4">
-                                <select id="class" class="form-control" name="tax_type">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>                    
-                        </div>
-                        <div class="form-group">
                             <label class="col-lg-4 control-label" for="">Payment Method</label>
                             <div class="col-lg-4">
-                                <select id="class" class="form-control" name="payment_method">
+                                <select id="payment_method" class="form-control" name="payment_method">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -67,16 +61,16 @@
                             </div>                    
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Client/Project</label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="client_project" name="client_project" placeholder="Allowance 2" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label" for="">Receipt Image</label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="receipt_image" name="receipt_image" placeholder="Allowance 3" />
-                            </div>
+                            <label class="col-lg-4 control-label" for="">Payer</label>
+                            <div class="col-lg-4">
+                                <select id="payer" class="form-control" name="payer">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>                    
                         </div>
                         <div class="form-group">
                             <label class="col-lg-4 control-label" for="">Amount</label>
@@ -86,11 +80,11 @@
                         </div>
                         <div class="form-group">
                             <label class="col-lg-4 control-label" for="">Notes</label>
-                            <div class="col-lg-8 col-sm-8">
+                            <div class="col-lg-8 col-sm-8"">
                                 <textarea class="form-control" rows="2" id="notes" name="notes"></textarea>
                             </div>
                         </div>
-
+     
             </div>
             </div> 
 
@@ -117,8 +111,8 @@
 
             var yyyy = t.getFullYear();
 
-            $("#date_spent").val(dd + '-' + mm + '-' + yyyy);
-            $("#date_spent").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
+            $("#income_date").val(dd + '-' + mm + '-' + yyyy);
+            $("#income_date").datepicker({ dateFormat: 'dd-mm-yy',changeMonth: true, changeYear: true });
           
         });
 
